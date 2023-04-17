@@ -1,0 +1,19 @@
+#packages etc
+library(ggplot2)
+library(RColorBrewer)
+data(seniorsalp, package="ggplot2")
+theme_set(theme_bw())
+
+#scatterplot and linear regression lines for chain
+ggplot(inelastic, aes(x=In, y=change, color=Morphology)) +
+  geom_point(color='lightblue') + 
+  geom_smooth(method = "lm", fill = NA, color='darkblue') + 
+  labs(y="Change in Velosity",
+       x="Velosity In (m/s)",
+       title="Comparing velosity in to change in velosity after inelastic collision") +
+  theme(
+    plot.title = element_text(size = 13)
+  )
+
+
+cor(inelastic$In, inelastic$change) #correlation coeficient between number and droptime
